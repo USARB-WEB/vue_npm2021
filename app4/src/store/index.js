@@ -15,7 +15,11 @@ export default new Vuex.Store({
   getters: {
     getProducts: (state) => {
       return state.cartProducts;
+    },
+    totalProductsInCart: (state) => {
+      return state.cartProducts.length;
     }
+
   },
   actions: {
     addToCart(context, product) {

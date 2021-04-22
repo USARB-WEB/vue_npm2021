@@ -2,12 +2,28 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/products">Products</router-link> | 
-      <router-link to="/cart">Shopping cart</router-link>
+      <router-link to="/products">Products</router-link> |
+      <router-link to="/cart"
+        >Shopping cart
+        <span v-if="productsIncart">({{ productsIncart }})</span></router-link
+      >
     </div>
     <router-view />
   </div>
 </template>
+
+<script>
+export default {
+  data: () => {
+    return{}
+  },
+  computed: {
+    productsIncart() {
+      return this.$store.getters.totalProductsInCart || 0;
+    },
+  },
+};
+</script>
 
 <style lang="scss">
 #app {
